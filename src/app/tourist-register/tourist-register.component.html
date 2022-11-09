@@ -1,0 +1,53 @@
+<body>
+<div class="container col-md-6 offset-md-3">
+<h1 style="color:green;">Tourist Registration</h1>
+<form (ngSubmit)="touristLogin()" [formGroup]="touristsregform">
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">Id:</label>
+        <input required formControlName="id" id="id" class="form-control" [(ngModel)]="tourist.id" type="number" placeholder="Enter Id">
+        <small *ngIf="touristsregform.get('id').invalid && touristsregform.get('id').touched" class="text-danger">Id is required. It should contain only digit. Maximum 4 digit number it can take.</small>
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">First Name:</label>
+        <input required class="form-control"formControlName="firstName" id="firstName" [(ngModel)]="tourist.firstName" type="text" placeholder="Enter First Name">
+        <small *ngIf="touristsregform.get('firstName').invalid && touristsregform.get('firstName').touched" class="text-danger">First Name is required. It should only contain alphabets and maximum 15 characters.</small>
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">Last Name:</label>
+        <input required class="form-control"formControlName="lastName" id="lastName" [(ngModel)]="tourist.lastName" type="text" placeholder="Enter Last Name">
+        <small *ngIf="touristsregform.get('lastName').invalid && touristsregform.get('lastName').touched" class="text-danger">Last Name is required. It should only contain alphabets and maximum 12 characters.</small>
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">Gender:</label>
+        <br>
+        <input type="radio" formControlName="gender" required id="gender" [(ngModel)]="tourist.gender" value="Male" class="form-check-input">Male
+        &nbsp;&nbsp;
+        <input type="radio" formControlName="gender" required id="gender" [(ngModel)]="tourist.gender" value="Female" class="form-check-input">Female
+        <small *ngIf="touristsregform.get('gender').invalid && touristsregform.get('gender').touched" class="text-danger">Gender is required.</small>
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">Age:</label>
+        <input required formControlName="age" id="age" class="form-control" [(ngModel)]="tourist.age" type="number" placeholder="Enter Age">
+        <small *ngIf="touristsregform.get('age').invalid && touristsregform.get('age').touched" class="text-danger">Age is required. Only numeric and two digit. Age can't be more than 90</small>
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">From Place:</label>
+        <input required class="form-control"formControlName="fromPlace" id="fromPlace" [(ngModel)]="tourist.fromPlace" type="text" placeholder="Enter From Place">
+        <small *ngIf="touristsregform.get('fromPlace').invalid && touristsregform.get('fromPlace').touched" class="text-danger">From place is required and only alphabets are allowed.</small>
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleForm" class="form-label">Number of days visits:</label>
+        <input required formControlName="numberofDaysVisits" id="numberofDaysVisits" class="form-control" [(ngModel)]="tourist.numberofDaysVisits" type="number" placeholder="Enter Number of days visits">
+        <small *ngIf="touristsregform.get('numberofDaysVisits').invalid && touristsregform.get('numberofDaysVisits').touched" class="text-danger">Numeric only</small>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary" [disabled]="touristsregform.invalid" (click)="registerNow()">Register</button>
+    </div>
+</form>
+</div>
+</body>
+
